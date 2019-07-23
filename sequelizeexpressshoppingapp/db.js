@@ -1,5 +1,5 @@
 const sequelize = require('sequelize');
-const db = new sequelize('shopdb','shopper','shoppass',{
+var db = new sequelize('shopdb','neeraj','neeraj02',{
     host:'localhost',
     dialect:'mysql',
     pool:{
