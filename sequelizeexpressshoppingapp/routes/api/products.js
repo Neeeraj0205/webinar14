@@ -4,6 +4,7 @@ const route = require('express').Router()
  route.get('/',(req,res)=>{
     Product.findAll()
     .then((products)=>{
+       
         res.status(200).send(products)
     })
     .catch((err)=>{
@@ -19,6 +20,7 @@ route.post('/',(req,res)=>{
               error:"price is not valid"
           })
       } 
+    
     Product.create({
         name:req.body.name, 
         manufacturer:req.body.manufacturer,
