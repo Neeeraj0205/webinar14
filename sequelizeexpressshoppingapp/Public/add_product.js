@@ -2,7 +2,7 @@ $(function(){
     let productName =$('#productName')
     let productManufacturer =$('#productManufacturer')
     let productPrice =$('#productPrice')
-    $('btnProductAdd').click((function(){
+    $('#btnProductAdd').click((function(){
         addProduct(
             productName.val(),productManufacturer.val(),productPrice.val(),
             function(addedProduct){
