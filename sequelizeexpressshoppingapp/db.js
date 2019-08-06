@@ -1,31 +1,48 @@
-const sequelize = require('sequelize');
-var db = new sequelize('shopdb','neeraj','neeraj02',{
-    host:'localhost',
-    dialect:'mysql',
-    pool:{
-        min:0,
-        max:5
+const Sequelize = require('sequelize')
+
+const db = new Sequelize('shopdb', 'neeraj', 'neeraj02', {
+    host: 'localhost',
+    dialect: 'mysql',
+    pool: {
+        min: 0,
+        max: 5,
     }
 })
-const User = db.define('users',{
-    id:{type:sequelize.INTEGER,autoIncrement:true,primaryKey :true},
-    name:{
-        type:sequelize.STRING,allowNULL:false
-    }
-})
-const Product = db.define('products',{
-    id:{type:sequelize.INTEGER,autoIncrement:true,primaryKey :true},
-    name:{
-        type:sequelize.STRING,allowNULL:false
+
+const User = db.define('users', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
     },
-    manufacturer:{
-        type:sequelize.STRING
-    },
-    price:{
-        type:sequelize.FLOAT,allowNULL:false,defaultvalue:0.0
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false,
     }
 })
+
+const Product = db.define('products', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    manufacturer: Sequelize.STRING,
+    price: {
+        type: Sequelize.FLOAT,
+        allowNull: false,
+        defaultValue: 0.0
+    }
+})
+
 db.sync()
-     .then(()=>console.log("database synced"))
-     .catch((err)=>console.error("DATABASE NOT SYNCED"))
-exports=module.exports={User,Product}
+    .then(() => console.log("Database has been synced"))
+    .catch((err) => console.error("Error creating database"))
+
+exports = module.exports = {
+    User, Product
+}
